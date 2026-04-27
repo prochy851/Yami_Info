@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        :root {
+            --bg: #100526;
+            --card: rgba(42, 10, 75, 0.92);
+            --text: #f3e8ff;
+            --accent: #c084fc;
+            --accent-strong: #a855f7;
+            --accent-soft: rgba(192, 132, 252, 0.18);
+            --border: rgba(192, 132, 252, 0.25);
+            --shadow: rgba(93, 30, 140, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, sans-serif;
+            background: radial-gradient(circle at top, rgba(135, 71, 255, 0.18), transparent 22%),
+                radial-gradient(circle at 20% 20%, #7c3aed 0%, transparent 18%),
+                radial-gradient(circle at 80% 10%, #8b5cf6 0%, transparent 20%),
+                radial-gradient(circle at bottom right, #12082c 0%, #07020f 35%),
+                #08030f;
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 50% 20%, rgba(192, 132, 252, 0.28), transparent 18%),
+                radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.16), transparent 14%);
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(1deg);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .fade-in:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .fade-in:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .fade-in:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page {
+            position: relative;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 40px 24px 64px;
+            z-index: 1;
+        }
+
+        header {
+            position: relative;
+            display: grid;
+            gap: 24px;
+            padding: 36px;
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(83, 40, 141, 0.94), rgba(20, 7, 51, 0.95));
+            box-shadow: 0 28px 80px var(--shadow);
+            border: 1px solid rgba(192, 132, 252, 0.18);
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            top: -40px;
+            right: -40px;
+            background: radial-gradient(circle, rgba(192, 132, 252, 0.35), transparent 55%);
+            filter: blur(18px);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            line-height: 1.02;
+            background: linear-gradient(90deg, #f5d0fe, #c084fc, #8b5cf6);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        header p {
+            max-width: 720px;
+            margin: 0;
+            color: #d8c5ff;
+            font-size: 1.05rem;
+        }
+
+        .grid {
+            display: grid;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .card {
+            padding: 28px;
+            border-radius: 24px;
+            background: linear-gradient(180deg, rgba(34, 11, 70, 0.95), rgba(29, 12, 54, 0.96));
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 50px var(--shadow);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(192, 132, 252, 0.32);
+            box-shadow: 0 26px 70px rgba(93, 30, 140, 0.35);
+        }
+
+        .card h2 {
+            margin-top: 0;
+            color: #f8f4ff;
+            position: relative;
+        }
+
+        .card h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            margin-top: 12px;
+            border-radius: 999px;
+            background: var(--accent);
+        }
+
+        .card ul {
+            margin: 16px 0 0;
+            padding-left: 20px;
+        }
+
+        .card li {
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            display: inline-block;
+            margin: 8px 8px 0 0;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(192, 132, 252, 0.18);
+            color: #f7efff;
+            font-size: 0.9rem;
+            border: 1px solid rgba(192, 132, 252, 0.25);
+        }
+
+        .contact {
+            display: grid;
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="page">
+        <header>
+            <div>
+                <p>Hi, I'm <strong>Yami</strong>. This page shares my passions for web design and 3D modeling.</p>
+                <h1>About Me</h1>
+            </div>
+            <div>
+            </div>
+        </header>
+
+        <section class="grid">
+            <article class="card fade-in">
+                <h2>About</h2>
+                <p>I'm a web enthusiast who enjoys turning ideas into polished pages. I'm curious about front-end
+                    design, responsive layouts, and making every website easy to read and navigate.</p>
+                <div class="contact">
+                    <div><strong>Location:</strong> Czech republic</div>
+                    <div><strong>Focus:</strong> web development, design, games, modeling</div>
+                </div>
+            </article>
+
+            <article class="card fade-in">
+                <h2>Skills</h2>
+                <div class="tag">HTML</div>
+                <div class="tag">CSS</div>
+                <div class="tag">JavaScript</div>
+                <div class="tag">Unity</div>
+                <div class="tag">Blender</div>
+                <div class="tag">3D modeling</div>
+            </article>
+
+            <article class="card fade-in">
+                <h2>3D Modeling</h2>
+                <p>I create 3D models for characters, scenes, and concept visuals using Blender. I enjoy building
+                    stylized assets, refining shapes, and preparing models for rendering or animation.</p>
+                <ul>
+                    <li>Modeling</li>
+                    <li>Texturing and material setup</li>
+                    <li>Scene composition and lighting</li>
+                    <li>Optimizing models for presentation</li>
+                </ul>
+            </article>
+
+            <article class="card fade-in">
+                <h2>Interests</h2>
+                <ul>
+                    <li>Videogames</li>
+                    <li>Web Design and Programming</li>
+                    <li>Anime and Manga</li>
+                    <li>Books</li>
+                    <li>3D Modeling</li>
+                </ul>
+            </article>
+
+            <article class="card fade-in">
+                <h2>Projects</h2>
+                <p>Here are some of my recent works:</p>
+                <ul>
+                    <li><strong>3D models of furniture:</strong> The 3D models will be at Unity Asset Store.</li>
+                    <li><strong>Videogame Lurking Demons</strong> i created that game for school project.</li>
+                </ul>
+            </article>
+
+            <article class="card fade-in">
+                <h2>Contact</h2>
+                <p>If you want to connect, you can update this section with your email or social link.</p>
+                <div class="contact">
+                    <a href="mailto:jakubprochazka851@gmail.com">jakubprochazka851@gmail.com</a>
+                    <a href="https://github.com/prochy851">GitHub</a>
+                </div>
+            </article>
+        </section>
+
+        <footer style="text-align: center; margin-top: 40px; padding: 20px; color: #d8c5ff;">
+            <p>&copy; 2026 Jakub. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>
